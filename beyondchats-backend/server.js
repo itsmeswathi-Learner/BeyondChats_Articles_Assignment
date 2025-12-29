@@ -11,35 +11,27 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// MongoDB Connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/beyondchats';
+// ✅ MongoDB (Render-safe)
+console.log("Mongo URI from env:", process.env.MONGODB_URI);
 
-mongoose.connect(MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('✅ Connected to MongoDB'))
-  .catch((err) => console.error('❌ MongoDB Error:', err.message));
+  .catch(err => {
+    console.error('❌ MongoDB Error:', err.message);
+    process.exit(1);
+  });
 
 // Routes
 app.use('/api/articles', articleRoutes);
 
 app.get('/', (req, res) => {
-  res.json({ 
+  res.json({
     message: '🚀 BeyondChats API',
-    status: 'Running',
-    endpoints: {
-      scrape: 'POST /api/articles/scrape',
-      articles: 'GET /api/articles',
-      original: 'GET /api/articles/original',
-      updated: 'GET /api/articles/updated'
-    }
+    status: 'Running'
   });
-});
-
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ error: err.message });
 });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`🚀 Server: http://localhost:${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });

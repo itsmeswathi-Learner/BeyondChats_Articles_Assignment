@@ -1,3 +1,12 @@
+
+
+<img width="1908" height="1019" alt="image" src="https://github.com/user-attachments/assets/27931464-440b-4867-be93-53dcabd8f87b" />
+
+<img width="1906" height="1018" alt="image" src="https://github.com/user-attachments/assets/05649eef-65e8-465a-a940-d7209b145f22" />
+
+<img width="1888" height="964" alt="image" src="https://github.com/user-attachments/assets/1ecb3fe1-564d-404d-8771-b9a5a427f98d" />
+
+
 STEP 1: Create README.md (5 minutes)
 bashcd C:\Users\User\Desktop\projects\assign1
 notepad README.md

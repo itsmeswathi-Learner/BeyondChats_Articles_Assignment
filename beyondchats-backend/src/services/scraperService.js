@@ -7,7 +7,7 @@ class ScraperService {
     try {
       console.log('🔍 Scraping BeyondChats blogs...');
       
-      const response = await axios.get('https://www.beyondchats.com/blogs', {
+      const response = await axios.get('https://beyondchats.com/blogs', {
         headers: {
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         },
@@ -20,7 +20,7 @@ class ScraperService {
       $('a[href*="/blog"]').each((i, elem) => {
         const href = $(elem).attr('href');
         if (href) {
-          const url = href.startsWith('http') ? href : `https://www.beyondchats.com${href}`;
+          const url = href.startsWith('http') ? href : `https://beyondchats.com${href}`;
           links.add(url);
         }
       });
